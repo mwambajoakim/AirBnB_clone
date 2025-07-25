@@ -6,3 +6,6 @@
   - `A console` - Here I will play around with the classes and how things will be stored and deleted and updated and so on.
   - The different classes - These are objects that will be used to create for xample the place, the type of house and so on.
   - `unittests` - These will ensure everything is working as it should.
+
+## The Command Interpreter
+- Also known as the console, will be like a shell which I use to create, update, delete instances of objects.
