@@ -15,9 +15,15 @@ class BaseModel:
     def __init__(self, *args, **kwargs):
         """Initializes the attributes of the class
         """
-        self.id = str(uuid.uuid4())
-        self.created_at = datetime.datetime.now()
-        self.updated_at = datetime.datetime.now()
+        if **kwargs:
+            for key, value  in kwargs.items():
+                self.id = "id"
+                self.created_at = "created_at"
+                self.updated_at = "updated_at"
+        else:
+            self.id = str(uuid.uuid4())
+            self.created_at = datetime.datetime.now()
+            self.updated_at = datetime.datetime.now()
 
     def __str__(self):
         """Returns a string of the class name, its id and dict
