@@ -4,6 +4,7 @@ from models.base_model import BaseModel
 import unittest
 import datetime
 import time
+from uuid import UUID
 
 
 class TestBaseModel(unittest.TestCase):
@@ -36,3 +37,33 @@ class TestBaseModel(unittest.TestCase):
         self.my_model.save()
         new_update = self.my_model.updated_at
         self.assertNotEqual(old_update, new_update)
+
+    def test_ID(self):
+        """Tests the automated ID"""
+        self.assertTrue(hasattr(self.my_model, "id"))
+        self.assertIsInstance(self.my_model.id, str)
+        try:
+            UUID(self.my_model.id)
+            is_valid_uuid = True
+        except ValueError:
+            is_valid_uuid = False
+
+        self.assertTrue(is_valid_uuid)
+
+    def test_created_at(self):
+        """Tests created_at attribute"""
+        self.assertTrue(hasattr(self.my_model, "created_at"))
+        self.assertIsInstance(self.my_model.created_at, datetime.datetime)
+
+    def test_updated_at(self):
+        """Tests the updated_at attribute"""
+        self.assertTrue(hasattr(self.my_model, "updated_at"))
+        self.assertIsInstance(self.my_model.updated_at, datetime.datetime)
+
+        old_update = self.my_model.updated_at
+        time.sleep(0.30)
+        self.my_model.save()
+        new_update = self.my_model.updated_at
+
+        self.assertNotEqual(old_update, new_update)
+        self.assertGreater(new_update, old_update)
