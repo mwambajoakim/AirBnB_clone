@@ -12,7 +12,7 @@ class BaseModel:
            created_at: Assigns current datetime when instance is created .
            updated_at: Assigns current datetime when instance is updated.
     """
-    def __init__(self):
+    def __init__(self, *args, **kwargs):
         """Initializes the attributes of the class
         """
         self.id = str(uuid.uuid4())
