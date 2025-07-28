@@ -31,8 +31,6 @@ class BaseModel:
         keys/values of __dict__ of the instance
         """
         new_dict = {
-            "my_number": self.my_number,
-            "name": self.name,
             "__class__": self.__class__.__name__,
             "id": self.id,
             "created_at": self.created_at.isoformat(),
