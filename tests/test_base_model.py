@@ -67,3 +67,12 @@ class TestBaseModel(unittest.TestCase):
 
         self.assertNotEqual(old_update, new_update)
         self.assertGreater(new_update, old_update)
+
+    def test_to_dict(self):
+        """Tests the to_dict method"""
+        my_dict = self.my_model.to_dict()
+
+        self.assertEqual(self.my_model.id, my_dict["id"])
+        self.assertEqual(self.my_model.created_at.isoformat(), my_dict["created_at"])
+        self.assertEqual(self.my_model.updated_at.isoformat(), my_dict["updated_at"])
+        self.assertEqual("BaseModel", my_dict["__class__"])
