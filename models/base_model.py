@@ -13,16 +13,20 @@ class BaseModel:
            updated_at: Assigns current datetime when instance is updated.
     """
     def __init__(self):
+        """Initializes the attributes of the class
+        """
         self.id = str(uuid.uuid4())
         self.created_at = datetime.datetime.now()
         self.updated_at = datetime.datetime.now()
 
     def __str__(self):
-        """Returns a string of the class name, its id and dict"""
+        """Returns a string of the class name, its id and dict
+        """
         return f"{[self.__class__.__name__]} ({self.id}) {self.__dict__}"
 
     def save(self):
-        """Updates the update_at attribute with the current time"""
+        """Updates the update_at attribute with the current time
+        """
         self.updated_at = datetime.datetime.now()
         return self.updated_at
 
