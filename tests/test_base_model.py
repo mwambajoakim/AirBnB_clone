@@ -3,6 +3,7 @@
 from models.base_model import BaseModel
 import unittest
 import datetime
+import time
 
 
 class TestBaseModel(unittest.TestCase):
@@ -30,6 +31,8 @@ class TestBaseModel(unittest.TestCase):
 
     def test_save(self):
         """Tests the save method in BaseModel"""
-        new_save = self.my_model.save()
-        self.assertNotEqual(self.old_save, self.new_save)
-        
+        old_update = self.my_model.updated_at
+        time.sleep(0.30)
+        self.my_model.save()
+        new_update = self.my_model.updated_at
+        self.assertNotEqual(old_update, new_update)
