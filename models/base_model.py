@@ -22,7 +22,7 @@ class BaseModel:
     def __str__(self):
         """Returns a string of the class name, its id and dict
         """
-        return f"{[self.__class__.__name__]} ({self.id}) {self.__dict__}"
+        return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
 
     def save(self):
         """Updates the update_at attribute with the current time
