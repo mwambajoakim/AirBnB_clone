@@ -15,11 +15,11 @@ class BaseModel:
     def __init__(self, *args, **kwargs):
         """Initializes the attributes of the class
         """
-        if **kwargs:
-            for key, value  in kwargs.items():
-                self.id = "id"
-                self.created_at = "created_at"
-                self.updated_at = "updated_at"
+        if kwargs:
+            for key, value in kwargs.items():
+                if key == "__class__":
+                    continue
+                setattr(self, key, value)
         else:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.datetime.now()
