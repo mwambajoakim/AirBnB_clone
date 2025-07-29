@@ -76,3 +76,9 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(self.my_model.created_at.isoformat(), my_dict["created_at"])
         self.assertEqual(self.my_model.updated_at.isoformat(), my_dict["updated_at"])
         self.assertEqual("BaseModel", my_dict["__class__"])
+
+    def test_set_kwargs(self):
+        """Tests if the kwargs are being set to create a new model"""
+        my_model_dict = self.my_model.to_dict()
+        my_new_model = BaseModel(**my_model_dict)
+        self.assertEqual(self.my_model.id, my_new_model.id)
