@@ -14,6 +14,12 @@ class BaseModel:
     """
     def __init__(self, *args, **kwargs):
         """Initializes the attributes of the class
+
+        Args:
+            *args: Multiple arguments that can be
+                   used to set an instance of BaseModel.
+            **kwargs: Multiple key-worded arguments
+                      that can be used to set an instance of BaseModel.
         """
         if kwargs:
             for key, value in kwargs.items():
