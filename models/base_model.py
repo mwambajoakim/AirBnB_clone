@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """Defines the base model for use with other classes"""
-import uuid
-import datetime
+from uuid import uuid4
+from datetime import datetime
 
 
 class BaseModel:
@@ -19,11 +19,16 @@ class BaseModel:
             for key, value in kwargs.items():
                 if key == "__class__":
                     continue
-                setattr(self, key, value)
+                if key == "created_at" or key == "updated_at":
+                    str_format = "%Y-%m-%dT%H:%M:%S.%f"
+                    dateformat = datetime.strptime(value, str_format)
+                    setattr(self, key, dateformat)
+                else:
+                    setattr(self, key, value)
         else:
-            self.id = str(uuid.uuid4())
-            self.created_at = datetime.datetime.now()
-            self.updated_at = datetime.datetime.now()
+            self.id = str(uuid4())
+            self.created_at = datetime.now()
+            self.updated_at = datetime.now()
 
     def __str__(self):
         """Returns a string of the class name, its id and dict
@@ -33,7 +38,7 @@ class BaseModel:
     def save(self):
         """Updates the update_at attribute with the current time
         """
-        self.updated_at = datetime.datetime.now()
+        self.updated_at = datetime.now()
         return self.updated_at
 
     def to_dict(self):
