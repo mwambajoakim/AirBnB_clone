@@ -2,6 +2,7 @@
 """Defines the base model for use with other classes"""
 from uuid import uuid4
 from datetime import datetime
+import engine
 
 
 class BaseModel:
@@ -45,6 +46,7 @@ class BaseModel:
         """Updates the update_at attribute with the current time
         """
         self.updated_at = datetime.now()
+        engine.storage.save()
         return self.updated_at
 
     def to_dict(self):
