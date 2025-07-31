@@ -9,3 +9,15 @@
 
 ## The Command Interpreter
 - Also known as the console, will be like a shell which I use to create, update, delete instances of objects.
+
+### BaseModel
+- This class defines all the common attributes/methods shared by other classes. It is found in the folder/package, `models`.
+- The attributes defined include:
+  - `id` - This is an id of an instance created using BaseModel. It is automatically genereted by use of `UUID4()'. Once it has been gnerated, it is stored as a string.
+  - `created_at` - This is a `datetime` attribute that shows when the instance was created.
+  - `updated_at` - This is also a `datetime` attribute which shows when the instance was updated.
+- The public instance methods defined include:
+  - `def save (self):` - This method updates the `updated_at` attribute with the current datetime.
+  - `def to_dict(self):` - Returns a dictionary of the attributes of the instance.
+    - Here, the class name is a key and its value is the name of the object.
+    - Both `created _at` and `updated_at` are formatted into strings using ISO format with the format, `%Y-%m-%dT%H:%M:%S.%f`
