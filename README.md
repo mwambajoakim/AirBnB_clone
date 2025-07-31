@@ -33,3 +33,6 @@
   - `__objects`: This is a dictionary that stores the objects. An object is stored in the form, `<obj class name>.id`
 - The public instance methods used in this class are:
   - `def all(self):` - This method returns the dictionary `__objects` which contains all the objects.
+  - `def new(self, obj):` - This method sets the object `obj` in the dictionary `__objects`. Key is always `<obj class name>.id` and value is the dict of `obj`.
+  - `def save(self):` - This method serializes the dictionary `__obj` and saves it into the `__file_path`.
+  - `def reload(self):` - This method deserializes the dictionary `__obj` from `__file_path` if `__file_path` exists. Exceptions have been suppressed.
