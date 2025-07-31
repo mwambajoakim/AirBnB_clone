@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """Serializes and deserializes to and from JSON files"""
+import json
 
 
 class FileStorage:
@@ -15,4 +16,18 @@ class FileStorage:
         """
         return self.__objects
 
-    def 
+    def new(self, obj):
+        """Sets in __objects, obj with key class name.id
+
+           Args:
+                obj: A BaseModel object
+        """
+        self.__objects = {
+           __class__.__name__.id: obj
+            }
+
+    def save(self):
+        """Serializes objects to filename, __file_path
+        """
+        with open(self.__file_path, 'a', encoding=UTF-8) as filename:
+            filename.dump(self.__objects)
