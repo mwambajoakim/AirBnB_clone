@@ -29,5 +29,12 @@ class FileStorage:
     def save(self):
         """Serializes objects to filename, __file_path
         """
-        with open(self.__file_path, 'a', encoding=UTF-8) as filename:
-            filename.dump(self.__objects)
+        with open("self.__file_path", 'a', encoding="UTF-8") as filename:
+            json.dump(self.__objects, filename)
+
+    def reload(self):
+        """Deserializes objects from filename __file_path to __objects
+        """
+        if self.__file_path:
+            with open("self.__file_path", encoding="UTF-8") as filename:
+                self.__objects = json.load(filename)
