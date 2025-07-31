@@ -22,19 +22,23 @@ class FileStorage:
            Args:
                 obj: A BaseModel object
         """
-        self.__objects = {
-           __class__.__name__.id: obj
-            }
+        key = obj.__class__.__name__ + "." + obj.id
+        self.__objects[key] = obj
 
     def save(self):
         """Serializes objects to filename, __file_path
         """
-        with open("self.__file_path", 'a', encoding="UTF-8") as filename:
-            json.dump(self.__objects, filename)
+        json_obj = {}
+        for key, obj in self.__objects.items():
+            json_obj[key] = obj.to_dict()
+        with open(self.__file_path, 'a', encoding="UTF-8") as filename:
+            json.dump(json_obj, filename)
 
     def reload(self):
         """Deserializes objects from filename __file_path to __objects
         """
-        if self.__file_path:
+        try:
             with open("self.__file_path", encoding="UTF-8") as filename:
                 self.__objects = json.load(filename)
+        except Exception:
+            pass
