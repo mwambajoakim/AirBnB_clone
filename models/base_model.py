@@ -32,13 +32,12 @@ class BaseModel:
                     setattr(self, key, dateformat)
                 else:
                     setattr(self, key, value)
-        #elif not kwargs:
-            #storage.new(self)
+        elif not kwargs:
+            storage.new(self)
         else:
             self.id = str(uuid4())
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
-            storage.new(self)
 
     def __str__(self):
         """Returns a string of the class name, its id and dict
