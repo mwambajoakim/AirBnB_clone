@@ -29,7 +29,7 @@ class FileStorage:
         """
         json_obj = {}
         for key, obj in self.__objects.items():
-            json_obj[key] = obj
+            json_obj[key] = obj.to_dict()
         with open(self.__file_path, 'w', encoding="UTF-8") as filename:
             json.dump(json_obj, filename)
 
