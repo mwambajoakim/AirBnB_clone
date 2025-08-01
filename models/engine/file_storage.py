@@ -27,7 +27,7 @@ class FileStorage:
     def save(self):
         """Serializes objects to filename, __file_path
         """
-       json_obj = {}
+        json_obj = {}
         for key, obj in self.__objects.items():
             json_obj[key] = obj
         with open(self.__file_path, 'w', encoding="UTF-8") as filename:
