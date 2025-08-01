@@ -36,3 +36,12 @@
   - `def new(self, obj):` - This method sets the object `obj` in the dictionary `__objects`. Key is always `<obj class name>.id` and value is the dict of `obj`.
   - `def save(self):` - This method serializes the dictionary `__obj` and saves it into the `__file_path`.
   - `def reload(self):` - This method deserializes the dictionary `__obj` from `__file_path` if `__file_path` exists. Exceptions have been suppressed.
+
+### ---------------------------------------------------------------------------------------------------------------------------------
+
+- After creating the `FileStorage` class, the `__init__.py` file in the `models` directory was updated to create an instance of `FileStorage`.
+  - Imported `file_storage.py` and created an instance `storage`
+  - The instance `storage` calls the `reload()` method.
+
+- Imported `storage` to `BaseModel` and used it in the `save()` method by calling the `save()` method of `FileStorage` on it.
+- Updated the `__init__` method of `BaseModel` such that wen there are no `**kwargs` to create a model, `storage` calls the `new()` method from `FileStorage` and creates a model.
