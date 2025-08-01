@@ -37,7 +37,7 @@ class FileStorage:
         """Deserializes objects from filename __file_path to __objects
         """
         try:
-            with open("self.__file_path", encoding="UTF-8") as filename:
+            with open(self.__file_path, encoding="UTF-8") as filename:
                 self.__objects = json.load(filename)
         except Exception:
             pass
