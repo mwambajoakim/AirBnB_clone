@@ -2,7 +2,7 @@
 """Defines the base model for use with other classes"""
 from uuid import uuid4
 from datetime import datetime
-import engine
+from models import storage
 
 
 class BaseModel:
@@ -32,10 +32,13 @@ class BaseModel:
                     setattr(self, key, dateformat)
                 else:
                     setattr(self, key, value)
+        #elif not kwargs:
+            #storage.new(self)
         else:
             self.id = str(uuid4())
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
+            storage.new(self)
 
     def __str__(self):
         """Returns a string of the class name, its id and dict
@@ -46,7 +49,7 @@ class BaseModel:
         """Updates the update_at attribute with the current time
         """
         self.updated_at = datetime.now()
-        engine.storage.save()
+        storage.save()
         return self.updated_at
 
     def to_dict(self):
