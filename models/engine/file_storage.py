@@ -38,6 +38,11 @@ class FileStorage:
         """
         try:
             with open(self.__file_path, encoding="UTF-8") as filename:
-                self.__objects = json.load(filename)
+                json_data  = json.load(filename)
+
+            for key, obj_dict in json_data.items():
+                class_name = key.split('.')[0]
+                from models.base_model import BaseModel
+                self.__objects[key] = BaseModel(**obj_dict)
         except Exception:
             pass
