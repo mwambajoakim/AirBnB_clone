@@ -5,3 +5,10 @@ import os
 from models.engine.file_storage import FileStorage
 import unittest
 
+
+class TestFileStorage(unittest.Testcase):
+    def setUp(self):
+        store = FileStorage()
+
+    
+
