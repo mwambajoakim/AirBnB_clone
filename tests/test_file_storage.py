@@ -6,8 +6,11 @@ from models.engine.file_storage import FileStorage
 import unittest
 
 
-class TestFileStorage(unittest.Testcase):
+class TestFileStorage(unittest.TestCase):
     def setUp(self):
-        store = FileStorage()
-        my_model = BaseModel()
+        self.store = FileStorage()
+
+    def test_all(self):
+        """Test the all() method"""
+        self.assertTrue(self.store.all())
 
