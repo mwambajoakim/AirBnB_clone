@@ -9,6 +9,5 @@ import unittest
 class TestFileStorage(unittest.Testcase):
     def setUp(self):
         store = FileStorage()
-
-    
+        my_model = BaseModel()
 
