@@ -9,9 +9,17 @@ import sys
 class HBNBCommand(cmd.Cmd):
     prompt = '(hbnb)'
 
-   def do_EOF(self, line):
-       return True
-   def do_quit(self, line):
-       print("See you next time!")
-       return True
-    
+    def do_EOF(self, line):
+        """Checks end of file. If true, exits gracefully.
+        """
+        return True
+
+    def do_quit(self, line):
+        """Exit the command line once the quit is called
+        """
+        print("See you next time!")
+        return True
+
+
+if __name__ == "__main__":
+    HBNBCommand().cmdloop()
