@@ -15,6 +15,11 @@
   - Defined the `quit` command which also hwlps the user to quit the console.
   - On pressing `Enter` + empty line, the console does not execute anything.
 
+- Defined different commands:
+  - `create` - Creates a new instance of `BaseModel`, saves it (to the JSON file) and prints the `id`. Ex: `$ create BaseModel`
+    - If the class name is missing, print `** class name missing **` (ex: `$ create`)
+      - If the class name doesn’t exist, print `** class doesn't exist **` (ex: `$ create MyModel`)
+
 ### Class BaseModel
 - This class defines all the common attributes/methods shared by other classes. It is found in the folder/package, `models`.
 - The attributes defined include:
