@@ -4,6 +4,7 @@
 """
 import cmd
 import sys
+from models.base_model import BaseModel
 
 
 class HBNBCommand(cmd.Cmd):
@@ -23,6 +24,17 @@ class HBNBCommand(cmd.Cmd):
     def emptyline(self):
         return None
 
+    def do_create(self, arg):
+        """Creates an instance of BaseModel.
+        """
+        if arg and arg != "BaseModel":
+            print("** class doesn't exist **")
+        elif not arg:
+            print("** class name missing **")
+        else:
+            arg = BaseModel()
+            print(arg.id)
+    
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
