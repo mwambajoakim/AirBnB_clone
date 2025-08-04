@@ -10,6 +10,11 @@
 ## The Command Interpreter
 - Also known as the console, will be like a shell which I use to create, update, delete instances of objects.
 
+- Made a console using the class `cmd`.
+  - Defined the `EOF` command which will help the user quit the console when it detects end of file
+  - Defined the `quit` command which also hwlps the user to quit the console.
+  - On pressing `Enter` + empty line, the console does not execute anything.
+
 ### Class BaseModel
 - This class defines all the common attributes/methods shared by other classes. It is found in the folder/package, `models`.
 - The attributes defined include:
