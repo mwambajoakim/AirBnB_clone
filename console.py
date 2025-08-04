@@ -20,6 +20,9 @@ class HBNBCommand(cmd.Cmd):
         print("See you next time!")
         return True
 
+    def emptyline(self):
+        return cmd.Cmd.emptyline(self)
+
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
