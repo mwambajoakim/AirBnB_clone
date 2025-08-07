@@ -98,6 +98,26 @@ class HBNBCommand(cmd.Cmd):
                     all_obj.append(str(obj))
         print (all_obj)
 
+    def do_update(self, arg):
+        args = arg.split()
+
+        if len(args) == 0:
+            print("** class name missing **")
+        elif args[0] != "BaseModel":
+            print("** class doesn't exist **")
+        elif len(args) == 1:
+            print("** instance id missing **")
+        elif len(args) == 2:
+            print("** attribute name missing **")
+        elif len(args) == 3:
+            print("** value missing **")
+        else:
+            models = storage.all()
+            key = f"{args[0]}.{args[1]}"
+            obj = models[key]
+            attr_name = args[2]
+            attr_value = "".join(args[3].strip('"'))
+            setattr(obj, attr_name, attr_value)
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
