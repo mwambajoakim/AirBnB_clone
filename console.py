@@ -118,6 +118,13 @@ class HBNBCommand(cmd.Cmd):
             obj = models[key]
             attr_name = args[2]
             attr_value = "".join(args[3].strip('"'))
+
+            if hasattr(obj, attr_name):
+                current_type = type(getattr(obj, attr_name))
+                try:
+                    attr_value = current_type(attr_value)
+                except:
+                    pass
             setattr(obj, attr_name, attr_value)
 
 if __name__ == "__main__":
