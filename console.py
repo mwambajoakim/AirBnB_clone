@@ -116,7 +116,7 @@ class HBNBCommand(cmd.Cmd):
         key = f"{args[0]}.{args[1]}"
 
         if key not in models:
-            print("** no instance found**")
+            print("** no instance found **")
             return
         if len(args) == 2:
             print("** attribute name missing **")
