@@ -77,7 +77,7 @@ class HBNBCommand(cmd.Cmd):
                 del models[key]
                 storage.save()
             else:
-                print("** instance doesn't exist **")
+                print("** no instance found **")
 
     def do_all(self, arg):
         """Prints all string representation of all instances
