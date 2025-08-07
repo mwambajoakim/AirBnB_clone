@@ -79,6 +79,25 @@ class HBNBCommand(cmd.Cmd):
             else:
                 print("** instance doesn't exist **")
 
+    def do_all(self, arg):
+        """Prints all string representation of all instances
+        based or not on the class name
+        """
+        args = arg.split()
+        all_obj = []
+        models = storage.all()
+        
+        if len(args) == 0:
+            for obj in models.values():
+                all_obj.append(str(obj))
+        elif args[0] != "BaseModel":
+            print("** class doesn't exist **")
+        else:
+            for key, obj in models.items():
+                if key.startswith(args[0] + "."):
+                    all_obj.append(str(obj))
+        print (all_obj)
+
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
