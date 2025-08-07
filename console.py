@@ -105,36 +105,36 @@ class HBNBCommand(cmd.Cmd):
         if len(args) == 0:
             print("** class name missing **")
             return
-        elif args[0] != "BaseModel":
+        if args[0] != "BaseModel":
             print("** class doesn't exist **")
             return
-        elif len(args) == 1:
+        if len(args) == 1:
             print("** instance id missing **")
             return
-        elif len(args) == 2:
+       
+        models = storage.all()
+        key = f"{args[0]}.{args[1]}"
+
+        if key not in models:
+            print("** no instance found**")
+            return
+        if len(args) == 2:
             print("** attribute name missing **")
             return
-        elif len(args) == 3:
+        if len(args) == 3:
             print("** value missing **")
             return
-        else:
-            models = storage.all()
-            key = f"{args[0]}.{args[1]}"
-            obj = models[key]
-            attr_name = args[2]
-            attr_value = "".join(args[3].strip('"'))
+        obj = models[key]
+        attr_name = args[2]
+        attr_value = "".join(args[3].strip('"'))
 
-            if key not in models:
-                print("** no instance found**")
-                return
-
-            if hasattr(obj, attr_name):
-                current_type = type(getattr(obj, attr_name))
-                try:
-                    attr_value = current_type(attr_value)
-                except:
-                    pass
-            setattr(obj, attr_name, attr_value)
+        if hasattr(obj, attr_name):
+            current_type = type(getattr(obj, attr_name))
+            try:
+                attr_value = current_type(attr_value)
+            except:
+                pass
+        setattr(obj, attr_name, attr_value)
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
