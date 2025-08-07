@@ -92,6 +92,7 @@ class HBNBCommand(cmd.Cmd):
                 all_obj.append(str(obj))
         elif args[0] != "BaseModel":
             print("** class doesn't exist **")
+            return
         else:
             for key, obj in models.items():
                 if key.startswith(args[0] + "."):
