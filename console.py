@@ -104,14 +104,19 @@ class HBNBCommand(cmd.Cmd):
 
         if len(args) == 0:
             print("** class name missing **")
+            return
         elif args[0] != "BaseModel":
             print("** class doesn't exist **")
+            return
         elif len(args) == 1:
             print("** instance id missing **")
+            return
         elif len(args) == 2:
             print("** attribute name missing **")
+            return
         elif len(args) == 3:
             print("** value missing **")
+            return
         else:
             models = storage.all()
             key = f"{args[0]}.{args[1]}"
@@ -121,6 +126,7 @@ class HBNBCommand(cmd.Cmd):
 
             if key not in models:
                 print("** no instance found**")
+                return
 
             if hasattr(obj, attr_name):
                 current_type = type(getattr(obj, attr_name))
