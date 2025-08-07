@@ -119,6 +119,9 @@ class HBNBCommand(cmd.Cmd):
             attr_name = args[2]
             attr_value = "".join(args[3].strip('"'))
 
+            if key not in models:
+                print("** no instance found**")
+
             if hasattr(obj, attr_name):
                 current_type = type(getattr(obj, attr_name))
                 try:
