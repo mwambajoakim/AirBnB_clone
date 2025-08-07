@@ -4,7 +4,7 @@ from models.base_model import BaseModel
 
 
 class User(BaseModel):
-    self.firs_name = ""
-    self.last_name = ""
-    self.email = ""
-    self.password = ""
+    firs_name = ""
+    last_name = ""
+    email = ""
+    password = ""
