@@ -7,8 +7,8 @@
   - The different classes - These are objects that will be used to create for xample the place, the type of house and so on.
   - `unittests` - These will ensure everything is working as it should.
 
-## The Command Interpreter
-- Also known as the console, will be like a shell which I use to create, update, delete instances of objects.
+## The Console
+- This will be like a shell which I use to create, update, delete instances of objects.
 
 - Made a console using the class `cmd`.
   - Defined the `EOF` command which will help the user quit the console when it detects end of file
