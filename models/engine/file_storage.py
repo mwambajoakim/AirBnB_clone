@@ -9,7 +9,6 @@ class FileStorage:
     """
     __file_path = f"{__name__}.json"
     __objects = {}
-    
 
     def all(self):
         """Returns all the objects in dictionary __objects
@@ -39,7 +38,7 @@ class FileStorage:
         """
         try:
             with open(self.__file_path, encoding="UTF-8") as filename:
-                json_data  = json.load(filename)
+                json_data = json.load(filename)
 
             from models import classes
             for key, obj_dict in json_data.items():
