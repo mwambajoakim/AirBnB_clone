@@ -55,7 +55,6 @@ class HBNBCommand(cmd.Cmd):
         elif len(args) == 1:
             print("** instance id missing **")
         else:
-            #class_name = classes[arg[0]]
             key = f"{args[0]}.{args[1]}"
             models = storage.all()
             if key in models:
@@ -71,12 +70,11 @@ class HBNBCommand(cmd.Cmd):
 
         if len(args) == 0:
             print("** class name missing **")
-        elif args[0] != "BaseModel":
+        elif args[0] not in classes:
             print("** class doesn't exist **")
         elif len(args) == 1:
             print("** instance id missing **")
         else:
-            from models import storage
             key = f"{args[0]}.{args[1]}"
             models = storage.all()
             if key in models:
