@@ -87,6 +87,7 @@ class HBNBCommand(cmd.Cmd):
         """Prints all string representation of all instances
         based or not on the class name
         """
+        from models import classes, storage
         args = arg.split()
         all_obj = []
         models = storage.all()
@@ -94,7 +95,7 @@ class HBNBCommand(cmd.Cmd):
         if len(args) == 0:
             for obj in models.values():
                 all_obj.append(str(obj))
-        elif args[0] != "BaseModel":
+        elif args[0] not in classes:
             print("** class doesn't exist **")
             return
         else:
