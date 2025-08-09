@@ -2,8 +2,6 @@
 """Defines the base model for use with other classes"""
 from uuid import uuid4
 from datetime import datetime
-from models import storage
-
 
 class BaseModel:
     """Defines all common attributes/methods for other classes
@@ -33,6 +31,7 @@ class BaseModel:
                 else:
                     setattr(self, key, value)
         else:
+            from models import storage
             self.id = str(uuid4())
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
@@ -46,6 +45,7 @@ class BaseModel:
     def save(self):
         """Updates the update_at attribute with the current time
         """
+        from models import storage
         self.updated_at = datetime.now()
         storage.save()
         return self.updated_at
