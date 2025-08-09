@@ -4,3 +4,9 @@ from models.base_model import BaseModel
 
 
 class Amenity(BaseModel):
+    """Creates an instance of the user's amenity.
+
+       Args:
+            name: Name of the amenity.
+    """
+    name = ""
