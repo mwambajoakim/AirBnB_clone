@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 """Serializes and deserializes to and from JSON files"""
 import json
+from models.base_model import BaseModel
+from models.user import User
 
 
 class FileStorage:
@@ -46,7 +48,6 @@ class FileStorage:
 
             for key, obj_dict in json_data.items():
                 class_name = key.split('.')[0]
-                from models.base_model import BaseModel
                 self.__objects[key] = classes[class_name](**obj_dict)
         except Exception:
             pass
