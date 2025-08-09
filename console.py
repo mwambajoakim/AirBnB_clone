@@ -6,6 +6,7 @@ import cmd
 import sys
 from models.engine.file_storage import FileStorage
 
+
 class HBNBCommand(cmd.Cmd):
     prompt = '(hbnb)'
 
@@ -86,7 +87,7 @@ class HBNBCommand(cmd.Cmd):
         args = arg.split()
         all_obj = []
         models = storage.all()
-        
+
         if len(args) == 0:
             for obj in models.values():
                 all_obj.append(str(obj))
@@ -97,7 +98,7 @@ class HBNBCommand(cmd.Cmd):
             for key, obj in models.items():
                 if key.startswith(args[0] + "."):
                     all_obj.append(str(obj))
-        print (all_obj)
+        print(all_obj)
 
     def do_update(self, arg):
         args = arg.split()
@@ -111,7 +112,7 @@ class HBNBCommand(cmd.Cmd):
         if len(args) == 1:
             print("** instance id missing **")
             return
-       
+
         models = storage.all()
         key = f"{args[0]}.{args[1]}"
 
@@ -132,9 +133,10 @@ class HBNBCommand(cmd.Cmd):
             current_type = type(getattr(obj, attr_name))
             try:
                 attr_value = current_type(attr_value)
-            except:
+            except Exception:
                 pass
         setattr(obj, attr_name, attr_value)
+
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
