@@ -37,11 +37,11 @@ class FileStorage:
     def reload(self):
         """Deserializes objects from filename __file_path to __objects
         """
-        from models import classes
         try:
             with open(self.__file_path, encoding="UTF-8") as filename:
                 json_data  = json.load(filename)
 
+            from models import classes
             for key, obj_dict in json_data.items():
                 class_name = obj_dict["__class__"]
                 if class_name in classes:
