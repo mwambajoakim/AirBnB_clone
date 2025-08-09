@@ -1,0 +1,6 @@
+#!/usr/bin/python3
+"""Initializes the city of user"""
+from models.base_model import BaseModel
+
+
+class City(BaseModel):
