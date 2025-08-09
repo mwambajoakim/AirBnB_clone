@@ -45,6 +45,7 @@ class HBNBCommand(cmd.Cmd):
         """Prints string representation of instance
            based on the name and id
         """
+        from models import classes, storage
         args = arg.split()
 
         if len(args) == 0:
@@ -54,7 +55,7 @@ class HBNBCommand(cmd.Cmd):
         elif len(args) == 1:
             print("** instance id missing **")
         else:
-            
+            #class_name = classes[arg[0]]
             key = f"{args[0]}.{args[1]}"
             models = storage.all()
             if key in models:
@@ -65,6 +66,7 @@ class HBNBCommand(cmd.Cmd):
     def do_destroy(self, arg):
         """Deletes an instance of BaseModel based on its id
         """
+        from models import classes, storage
         args = arg.split()
 
         if len(args) == 0:
