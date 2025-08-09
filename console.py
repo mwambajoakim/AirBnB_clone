@@ -8,8 +8,6 @@ from models.engine.file_storage import FileStorage
 
 class HBNBCommand(cmd.Cmd):
     prompt = '(hbnb)'
-    from models import storage
-    file = storage.reload()
 
     def do_EOF(self, line):
         """Checks end of file. If true, exits gracefully.
