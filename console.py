@@ -6,16 +6,13 @@ import cmd
 import sys
 from models.base_model import BaseModel
 from models.engine.file_storage import FileStorage
-from models import storage
 from models.user import User
 
 
 class HBNBCommand(cmd.Cmd):
     prompt = '(hbnb)'
+    from models import storage
     file = storage.reload()
-    classes = {
-        "BaseModel": BaseModel
-        "User": User}
 
     def do_EOF(self, line):
         """Checks end of file. If true, exits gracefully.
@@ -32,16 +29,17 @@ class HBNBCommand(cmd.Cmd):
         return None
 
     def do_create(self, arg):
-        """Creates an instance of BaseModel.
+        """Creates an instance of BaseModela class.
         """
-        if arg and arg != "BaseModel":
+        from models import classes
+        if arg and arg not in classes:
             print("** class doesn't exist **")
         elif not arg:
             print("** class name missing **")
         else:
-            arg = BaseModel()
-            arg.save()
-            print(arg.id)
+            new_instance = classes[arg]()
+            new_instance.save()
+            print(new_instance.id)
 
     def do_show(self, arg):
         """Prints string representation of instance
@@ -51,11 +49,12 @@ class HBNBCommand(cmd.Cmd):
 
         if len(args) == 0:
             print("** class name missing **")
-        elif args[0] != "BaseModel":
+        elif args[0] not in classes:
             print("** class doesn't exist **")
         elif len(args) == 1:
             print("** instance id missing **")
         else:
+            
             key = f"{args[0]}.{args[1]}"
             models = storage.all()
             if key in models:
@@ -75,6 +74,7 @@ class HBNBCommand(cmd.Cmd):
         elif len(args) == 1:
             print("** instance id missing **")
         else:
+            from models import storage
             key = f"{args[0]}.{args[1]}"
             models = storage.all()
             if key in models:
