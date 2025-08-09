@@ -11,10 +11,7 @@ class FileStorage:
     """
     __file_path = f"{__name__}.json"
     __objects = {}
-    classes = {
-        "BaseModel": BaseModel,
-        "User": User
-    }
+    
 
     def all(self):
         """Returns all the objects in dictionary __objects
@@ -42,12 +39,17 @@ class FileStorage:
     def reload(self):
         """Deserializes objects from filename __file_path to __objects
         """
+        classes = {
+        "BaseModel": BaseModel,
+        "User": User
+    }
         try:
             with open(self.__file_path, encoding="UTF-8") as filename:
                 json_data  = json.load(filename)
 
             for key, obj_dict in json_data.items():
-                class_name = key.split('.')[0]
-                self.__objects[key] = classes[class_name](**obj_dict)
+                class_name = obj_dict["__class__"]
+                if class_name in classes:
+                    self.__objects[key] = classes[class_name](**obj_dict)
         except Exception:
             pass
