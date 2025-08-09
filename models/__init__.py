@@ -4,7 +4,7 @@ Imports 'file_storage.py'
 Creates a variable 'storage'
 Calls reload() on 'storage' variable
 """
-
+from models.engine.file_storage import FileStorage
 from models.user import User
 from models.base_model import BaseModel
 from models.user import User
@@ -13,6 +13,7 @@ from models.city import City
 from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
+
 
 classes = {
     "BaseModel": BaseModel,
@@ -23,9 +24,6 @@ classes = {
     "Place": Place,
     "Review": Review
     }
-from models.engine.file_storage import FileStorage
 
 storage = FileStorage()
 storage.reload()
-
-
