@@ -7,11 +7,15 @@ import sys
 from models.base_model import BaseModel
 from models.engine.file_storage import FileStorage
 from models import storage
+from models.user import User
 
 
 class HBNBCommand(cmd.Cmd):
     prompt = '(hbnb)'
     file = storage.reload()
+    classes = {
+        "BaseModel": BaseModel
+        "User": User}
 
     def do_EOF(self, line):
         """Checks end of file. If true, exits gracefully.
