@@ -16,9 +16,32 @@
   - On pressing `Enter` + empty line, the console does not execute anything.
 
 - Defined different commands:
-  - `create` - Creates a new instance of `BaseModel`, saves it (to the JSON file) and prints the `id`. Ex: `$ create BaseModel`
-    - If the class name is missing, print `** class name missing **` (ex: `$ create`)
-      - If the class name doesn’t exist, print `** class doesn't exist **` (ex: `$ create MyModel`)
+  - `create`: Creates a new instance of `BaseModel`, saves it (to the JSON file) and prints the `id`. Ex: `$ create BaseModel`
+      - If the class name is missing, prints `** class name missing **` (ex: `$ create`)
+      - If the class name doesn’t exist, prints `** class doesn't exist **` (ex: `$ create MyModel`)
+  - `show`: Prints the string representation of an instance based on the class name and `id`. Ex: `$ show BaseModel 1234-1234-1234`.
+      - If the class name is missing, prints `** class name missing **` (ex: `$ show`)
+      - If the class name doesn’t exist, prints `** class doesn't exist **` (ex: `$ show MyModel`)
+      - If the `id` is missing, prints `** instance id missing **` (ex: `$ show BaseModel`)
+      - If the instance of the class name doesn’t exist for the `id`, prints `** no instance found **` (ex: `$ show BaseModel 121212`)
+  - `destroy`: Deletes an instance based on the class name and 	id` (saves the change into the JSON file). Ex: `$ destroy BaseModel 1234-1234-1234`.
+      - If the class name is missing, prints `** class name missing **` (ex: `$ destroy`)
+      - If the class name doesn’t exist, prints ** class doesn't exist ** (ex: `$ destroy MyModel`)
+      - If the `id` is missing, prints `** instance id missing **` (ex: `$ destroy BaseModel`)
+      - If the instance of the class name doesn’t exist for the `id`, prints `** no instance found **` (ex: `$ destroy BaseModel 121212`)
+  - `all`: Prints all string representation of all instances based or not on the class name. Ex: `$ all BaseModel` or `$ all`.
+      - If the class name doesn’t exist, prints `** class doesn't exist **` (ex: `$ all MyModel`)
+  - `update`: Updates an instance based on the class name and `id` by adding or updating attribute (saves the change into the JSON file). Ex: `$ update BaseModel 1234-1234-1234 email "aibnb@mail.com"`.
+  - Usage: `update <class name> <id> <attribute name> "<attribute value>"`
+  - Only one attribute can be updated at the time
+  - Assuming the attribute name is valid (exists for this model)
+  - The attribute value is cast to the attribute type
+  - If the class name is missing, prints `** class name missing **` (ex: `$ update`)
+  - If the class name doesn’t exist, prints `** class doesn't exist **` (ex: `$ update MyModel`)
+  - If the `id` is missing, prints `** instance id missing **` (ex: `$ update BaseModel`)
+  - If the instance of the class name doesn’t exist for the `id`, prints `** no instance found **` (ex: `$ update BaseModel 121212`)
+  - If the attribute name is missing, prints `** attribute name missing **` (ex: `$ update BaseModel existing-id`)
+  - If the value for the attribute name doesn’t exist, prints `** value missing **` (ex: `$ update BaseModel existing-id first_name`)
 
 ### Class BaseModel
 - This class defines all the common attributes/methods shared by other classes. It is found in the folder/package, `models`.
@@ -47,7 +70,7 @@
   - `def save(self):` - This method serializes the dictionary `__obj` and saves it into the `__file_path`.
   - `def reload(self):` - This method deserializes the dictionary `__obj` from `__file_path` if `__file_path` exists. Exceptions have been suppressed.
 
-### ---------------------------------------------------------------------------------------------------------------------------------
+### --------------------------------------------------------------------------------------------------------------------------------
 
 - After creating the `FileStorage` class, the `__init__.py` file in the `models` directory was updated to create an instance of `FileStorage`.
   - Imported `file_storage.py` and created an instance `storage`
