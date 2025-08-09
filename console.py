@@ -106,11 +106,11 @@ class HBNBCommand(cmd.Cmd):
 
     def do_update(self, arg):
         args = arg.split()
-
+        from models import classes, storage
         if len(args) == 0:
             print("** class name missing **")
             return
-        if args[0] != "BaseModel":
+        if args[0] not in classes:
             print("** class doesn't exist **")
             return
         if len(args) == 1:
