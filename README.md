@@ -58,6 +58,14 @@
     - In `BaseModel`'s init method, it accepts both non-key-word argumets and key-worded arguments. This is used for creating an instance from a dict using the **kwargs parameter. Every key and value is used to make an instance except the `"__class__.name"` key.
     - If `**kwargs` do not exist, the attributes are initialized through te defined attributes.
 
+### Class User
+- This class creates a user and it inherits from BaseModel.
+- Its public class attributes are:
+  - `email`: An empty string to store the email.
+  - `password`: An empty string to store the password.
+  - `first_name`: An empty string to store the first name.
+  - `last_name`: An empty string to store the last name.
+
 ### Class FileStorage
 - After creating `BaseModel` which created instances with common attributes and methods, I realised I was unable to persist the instances.
 - This class which is in the folder `models/engine` is used to store instances to a file by serializing the object to `JSON` and saving to a file with extension `.json`.
