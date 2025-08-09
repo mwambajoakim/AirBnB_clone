@@ -1,8 +1,6 @@
 #!/usr/bin/python3
 """Serializes and deserializes to and from JSON files"""
 import json
-from models.base_model import BaseModel
-from models.user import User
 
 
 class FileStorage:
@@ -39,6 +37,8 @@ class FileStorage:
     def reload(self):
         """Deserializes objects from filename __file_path to __objects
         """
+        from models.base_model import BaseModel
+        from models.user import User
         classes = {
         "BaseModel": BaseModel,
         "User": User
