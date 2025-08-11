@@ -86,6 +86,20 @@
 - The public class attribute is:
   - `name`: An empty string to store the name of the ammenity.
 
+### Class Place
+- This is the place itself.
+- The public class attributes are:
+  - `city_id`: An empty string which will store `City.id`.
+  - `user_id`: An empty string which will store `User.id`.
+  - `name`: An empty string to store the name of the place.
+  - `description`: An empty string that will contain the description of the place.
+  - `number_rooms`: An integer storing the number of rooms of the place.
+  - `number_bathrooms`: An integer storing the number of bathrooms of the place.
+  - `max_guest`: An integer storing the maximum number of guests the place can have.
+  - `price_by_night`: An integer storing the price of the place each night.
+  - `latitude`: A float storing the latitude of the place.
+  - `longitude`: A float storing the longitude of the place.
+  - `amenity_ids`: A list of amenities available in the place.
 
 ### Class FileStorage
 - After creating `BaseModel` which created instances with common attributes and methods, I realised I was unable to persist the instances.
