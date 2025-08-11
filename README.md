@@ -70,6 +70,11 @@
   - `first_name`: An empty string to store the first name.
   - `last_name`: An empty string to store the last name.
 
+### Class State
+- This is the state location.
+- The public class attribute is:
+  - `name`: An empty string to store the name of the state.
+
 ### Class FileStorage
 - After creating `BaseModel` which created instances with common attributes and methods, I realised I was unable to persist the instances.
 - This class which is in the folder `models/engine` is used to store instances to a file by serializing the object to `JSON` and saving to a file with extension `.json`.
