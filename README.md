@@ -101,6 +101,13 @@
   - `longitude`: A float storing the longitude of the place.
   - `amenity_ids`: A list of amenities available in the place.
 
+### Class Review
+- This is a review of the place.
+- The public class attributes are:
+  - `place_id`: An empty string which will store `Place.id`.
+  - `user_id`: An empty string which will store `User.id`.
+  - `text`: A string that will hold the review.
+
 ### Class FileStorage
 - After creating `BaseModel` which created instances with common attributes and methods, I realised I was unable to persist the instances.
 - This class which is in the folder `models/engine` is used to store instances to a file by serializing the object to `JSON` and saving to a file with extension `.json`.
