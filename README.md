@@ -75,6 +75,12 @@
 - The public class attribute is:
   - `name`: An empty string to store the name of the state.
 
+### Class City
+- This is the city location.
+- The public class attributes are:
+  - `state_id`: An empty string which will be `State.id`.
+  - `name`: An empty string to store the name of the city.
+
 ### Class FileStorage
 - After creating `BaseModel` which created instances with common attributes and methods, I realised I was unable to persist the instances.
 - This class which is in the folder `models/engine` is used to store instances to a file by serializing the object to `JSON` and saving to a file with extension `.json`.
