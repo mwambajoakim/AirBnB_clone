@@ -27,7 +27,8 @@ class TestBaseModel(unittest.TestCase):
 
     def test_str(self):
         """Tests the __str__ method"""
-        expected_str = f"[BaseModel] ({self.my_model.id}) {self.my_model.__dict__}"
+        expected_str = (f"[BaseModel] ({self.my_model.id}) "
+                        f"{self.my_model.__dict__}")
         self.assertEqual(str(self.my_model), expected_str)
 
     def test_save(self):
@@ -71,10 +72,12 @@ class TestBaseModel(unittest.TestCase):
     def test_to_dict(self):
         """Tests the to_dict method"""
         my_dict = self.my_model.to_dict()
+        created_iso = self.my_model.created_at.isoformat()
+        updated_iso = self.my_model.updated_at.isoformat()
 
         self.assertEqual(self.my_model.id, my_dict["id"])
-        self.assertEqual(self.my_model.created_at.isoformat(), my_dict["created_at"])
-        self.assertEqual(self.my_model.updated_at.isoformat(), my_dict["updated_at"])
+        self.assertEqual(created_iso, my_dict["created_at"])
+        self.assertEqual(updated_iso, my_dict["updated_at"])
         self.assertEqual("BaseModel", my_dict["__class__"])
 
     def test_set_kwargs(self):
