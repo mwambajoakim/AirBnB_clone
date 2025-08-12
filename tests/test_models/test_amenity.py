@@ -46,4 +46,14 @@ class TestAmenity(unittest.TestCase):
             is_valid = False
         self.assertTrue(is_valid)
 
+    def test_to_dict(self):
+        """Assert 'to_dict' method works"""
+        my_dict = self.my_amenity.to_dict()
+        created_iso = self.my_amenity.created_at.isoformat()
+        updated_iso = self.my_amenity.updated_at.isoformat()
+
+        self.assertEqual(self.my_amenity.id, my_dict["id"])
+        self.assertEqual(created_iso, my_dict["created_at"])
+        self.assertEqual(updated_iso, my_dict["updated_at"])
+
     
