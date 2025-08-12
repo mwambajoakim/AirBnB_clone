@@ -8,4 +8,10 @@ import datetime
 
 class TestReview(unittest.TestCase):
     def setUp(self):
+        """Sets up an instance of Review"""
         self.my_review = Review()
+
+    def test_issubclass(self):
+        """Tests if Review inherits from
+        BaseModel"""
+        self.assertTrue(issubclass(Review, BaseModel))
