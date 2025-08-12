@@ -40,3 +40,9 @@ class TestCity(unittest.TestCase):
         except ValueError:
             is_valid = False
         self.assertTrue(is_valid)
+
+    def test_set_kwargs(self):
+        """Instantiate new city with current dict"""
+        my_dict = self.my_city.to_dict()
+        self.new_city = City(**my_dict)
+        self.assertEqual(self.my_city.id, self.new_city.id)
