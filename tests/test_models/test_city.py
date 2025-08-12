@@ -16,3 +16,7 @@ class TestCity(unittest.TestCase):
     def test_issubclass(self):
         """Asserts City inherits from BaseModel"""
         self.assertTrue(issubclass(City, BaseModel))
+
+    def test_created_at(self):
+        """Tests the instance has an attribute 'created_at'"""
+        self.assertTrue(hasattr(self.my_city, "created_at"))
