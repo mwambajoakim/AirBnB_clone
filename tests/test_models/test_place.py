@@ -28,3 +28,20 @@ class TestPlace(unittest.TestCase):
         """Test the instance 'my_place has the attribute
         'updated_at'"""
         self.assertTrue(hasattr(self.my_place, "updated_at"))
+
+    def test_to_dict(self):
+        """Test the method 'to_dict' is accurate"""
+        my_dict = self.my_place.to_dict()
+        created_iso = self.my_place.created_at.isoformat()
+        updated_iso = self.my_place.updated_at.isoformat()
+
+        self.assertEqual(self.my_place.id, my_dict["id"])
+        self.assertEqual(created_iso, my_dict["created_at"])
+        self.assertEqual(updated_iso, my_dict["updated_at"])
+
+    def test_kwargs(self):
+        """Instantiate a new instance with current instance dict"""
+        my_dict = self.my_place.to_dict()
+        self.new_place = Place(**my_dict)
+
+        self.assertEqual(self.new_place.id, self.my_place.id)
