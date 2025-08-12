@@ -3,7 +3,7 @@
 import unittest
 import time
 from uuid import UUID
-frm models.base_model import BaseModel
+from models.base_model import BaseModel
 from models.amenity import Amenity
 
 
@@ -11,3 +11,7 @@ class TestAmenity(unittest.TestCase):
     def setUp(self):
         """Set up instance of Amenity"""
         self.my_amenity = Amenity()
+
+    def test_name(self):
+        """Test the instance has attribute 'name'"""
+        self.assertTrue(hasattr(self.my_amenity, "name"))
