@@ -41,3 +41,8 @@ class TestUser(unittest.TestCase):
         self.assertEqual(my_dict["id"], self.my_user.id)
         self.assertEqual(my_dict["created_at"], created_iso)
         self.assertEqual(my_dict["updated_at"], updated_iso)
+
+    def test_kwargs(self):
+        my_dict = self.my_user.to_dict()
+        self.my_new_user = User(**my_dict)
+        self.assertEqual(self.my_new_user.id, self.my_user.id)
