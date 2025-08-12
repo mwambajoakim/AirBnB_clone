@@ -11,6 +11,10 @@ class TestPlace(unittest.TestCase):
         self.my_place = Place()
         self.my_place.name = "Duwaa"
 
+    def test_issubclass(self):
+        """Test instance is subclass of BaseModel"""
+        self.assertTrue(issubclass(Place, BaseModel))
+
     def test_name(self):
         """Assert name exists"""
         self.assertEqual(self.my_place.name, "Duwaa")
