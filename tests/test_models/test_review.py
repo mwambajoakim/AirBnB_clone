@@ -3,7 +3,6 @@
 from models.base_model import BaseModel
 from models.review import Review
 import unittest
-import datetime
 
 
 class TestReview(unittest.TestCase):
