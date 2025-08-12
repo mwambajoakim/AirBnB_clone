@@ -25,6 +25,7 @@ class TestReview(unittest.TestCase):
         self.assertTrue(hasattr(self.my_review, "updated_at"))
 
     def test_to_dict(self):
+        """Test the to_dict of the instance"""
         my_dict = self.my_review.to_dict()
         created_iso = self.my_review.created_at.isoformat()
         updated_iso = self.my_review.updated_at.isoformat()
@@ -32,3 +33,10 @@ class TestReview(unittest.TestCase):
         self.assertEqual(self.my_review.id, my_dict["id"])
         self.assertEqual(created_iso, my_dict["created_at"])
         self.assertEqual(updated_iso, my_dict["updated_at"])
+
+    def test_kwargs(self):
+        """Initialize a new instance with 'my_review\'s' dict"""
+        my_dict = self.my_review.to_dict()
+        self.new_review = Review(**my_dict)
+
+        self.assertEqual(self.my_review.id, self.new_review.id)
