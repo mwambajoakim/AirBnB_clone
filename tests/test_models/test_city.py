@@ -11,5 +11,8 @@ class TestCity(unittest.TestCase):
     def setUp(self):
         """Set up an instance of City"""
         self.my_city = City()
-        slef.my_city.name = "Nairobi"
+        self.my_city.name = "Nairobi"
 
+    def test_issubclass(self):
+        """Asserts City inherits from BaseModel"""
+        self.assertTrue(issubclass(City, BaseModel))
