@@ -16,15 +16,19 @@ class TestUser(unittest.TestCase):
         updated_at = self.my_user.updated_at
 
     def test_user_fname(self):
+        self.assertTrue(hasattr(self.my_user, "first_name"))
         self.assertEqual(self.my_user.first_name, "Joe")
 
     def test_user_lname(self):
+        self.assertTrue(hasattr(self.my_user, "last_name"))
         self.assertEqual(self.my_user.last_name, "Log")
 
     def test_user_email(self):
+        self.assertTrue(hasattr(self.my_user, "email"))
         self.assertEqual(self.my_user.email, "joelog@email.com")
 
     def test_user_pass(self):
+        self.assertTrue(hasattr(self.my_user, "password"))
         self.assertEqual(self.my_user.password, "jl1234")
 
     def test_created_at(self):
