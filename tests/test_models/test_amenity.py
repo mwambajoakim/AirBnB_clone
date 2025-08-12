@@ -56,4 +56,12 @@ class TestAmenity(unittest.TestCase):
         self.assertEqual(created_iso, my_dict["created_at"])
         self.assertEqual(updated_iso, my_dict["updated_at"])
 
+    def test_set_kwargs(self):
+        """Set new instance with kwargs from current instance"""
+        my_dict = self.my_amenity.to_dict()
+        self.new_amenity = Amenity(**my_dict)
+
+        self.assertEqual(self.new_amenity.id, self.my_amenity.id)
+        
+
     
