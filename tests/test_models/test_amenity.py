@@ -15,3 +15,7 @@ class TestAmenity(unittest.TestCase):
     def test_name(self):
         """Test the instance has attribute 'name'"""
         self.assertTrue(hasattr(self.my_amenity, "name"))
+
+    def test_created_at(self):
+        """Test instance has attribute 'created_at'"""
+        self.assertTrue(hasattr(self.my_city, "created_at"))
