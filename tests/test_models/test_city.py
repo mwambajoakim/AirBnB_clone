@@ -46,3 +46,13 @@ class TestCity(unittest.TestCase):
         my_dict = self.my_city.to_dict()
         self.new_city = City(**my_dict)
         self.assertEqual(self.my_city.id, self.new_city.id)
+
+    def test_to_dict(self):
+        """Test the 'to_dict' method"""
+        my_dict = self.my_city.to_dict()
+        created_iso = self.my_city.created_at.isoformat()
+        updated_iso = self.my_city.updated_at.isoformat()
+
+        self.assertEqual(self.my_city.id, my_dict["id"])
+        self.assertEqual(created_iso, my_dict["created_at"])
+        self.assertEqual(updated_iso, my_dict["updated_at"])
