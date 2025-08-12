@@ -2,7 +2,7 @@
 """Test the class City"""
 import unittest
 import time
-import uuid
+from uuid import UUID
 from models.base_model import BaseModel
 from models.city import City
 
@@ -31,3 +31,12 @@ class TestCity(unittest.TestCase):
         new_update = self.my_city.updated_at
         self.assertNotEqual(old_update, new_update)
         self.assertLess(old_update, new_update)
+
+    def test_ID(self):
+        self.assertTrue(hasattr(self.my_city, "id"))
+        try:
+            UUID(self.my_city.id)
+            is_valid = True
+        except ValueError:
+            is_valid = False
+        self.assertTrue(is_valid)
