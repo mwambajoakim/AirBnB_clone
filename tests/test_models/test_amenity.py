@@ -24,4 +24,15 @@ class TestAmenity(unittest.TestCase):
         """Test instance has attribute 'created_at'"""
         self.assertTrue(hasattr(self.my_amenity, "created_at"))
 
+    def test_updated_at(self):
+        self.assertTrue(hasattr(self.my_amenity, "updated_at"))
+
+        old_update = self.my_amenity.updated_at
+        time.sleep(0.70)
+        self.my_amenity.save()
+        new_update = self.my_amenity.updated_at
+
+        self.assertLess(old_update, new_update)
+        self.assertNotEqual(new_update, old_update)
+
     
