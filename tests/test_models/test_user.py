@@ -30,14 +30,14 @@ class TestUser(unittest.TestCase):
     def test_created_at(self):
         self.assertTrue(hasattr(self.my_user, "created_at"))
         self.assertTrue(isinstance(self.my_user, User))
-        #self.assertTrue(issubclass(self.my_user, BaseModel))
 
     def test_updated_at(self):
         self.assertTrue(hasattr(self.my_user, "updated_at"))
 
     def test_to_dict(self):
         my_dict = self.my_user.to_dict()
+        created_iso = self.my_user.created_at.isoformat()
+        updated_iso = self.my_user.updated_at.isoformat()
         self.assertEqual(my_dict["id"], self.my_user.id)
-        self.assertEqual(my_dict["created_at"], self.my_user.created_at.isoformat())
-        self.assertEqual(my_dict["updated_at"], self.my_user.updated_at.isoformat())
-        
+        self.assertEqual(my_dict["created_at"], created_iso)
+        self.assertEqual(my_dict["updated_at"], updated_iso)
