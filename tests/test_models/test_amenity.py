@@ -12,10 +12,16 @@ class TestAmenity(unittest.TestCase):
         """Set up instance of Amenity"""
         self.my_amenity = Amenity()
 
+    def test_issubclass(self):
+        """Test Amenity inherits from BaseModel"""
+        self.assertTrue(issubclass(Amenity, BaseModel))
+
     def test_name(self):
         """Test the instance has attribute 'name'"""
         self.assertTrue(hasattr(self.my_amenity, "name"))
 
     def test_created_at(self):
         """Test instance has attribute 'created_at'"""
-        self.assertTrue(hasattr(self.my_city, "created_at"))
+        self.assertTrue(hasattr(self.my_amenity, "created_at"))
+
+    
