@@ -15,3 +15,6 @@ class TestReview(unittest.TestCase):
         """Tests if Review inherits from
         BaseModel"""
         self.assertTrue(issubclass(Review, BaseModel))
+
+    def test_created_at(self):
+        self.assertTrue(hasattr(self.my_review, "created_at"))
