@@ -17,4 +17,9 @@ class TestReview(unittest.TestCase):
         self.assertTrue(issubclass(Review, BaseModel))
 
     def test_created_at(self):
+        """Test 'created_at' attribute exists"""
         self.assertTrue(hasattr(self.my_review, "created_at"))
+
+    def test_updated_at(self):
+        """Test 'updated_at' attribute exists"""
+        self.assertTrue(hasattr(self.my_review, "updated_at"))
