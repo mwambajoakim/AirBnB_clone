@@ -35,4 +35,15 @@ class TestAmenity(unittest.TestCase):
         self.assertLess(old_update, new_update)
         self.assertNotEqual(new_update, old_update)
 
+    def test_ID(self):
+        """Test the instance id"""
+        self.assertTrue(hasattr(self.my_amenity, "id"))
+
+        try:
+            UUID(self.my_amenity.id)
+            is_valid = True
+        except ValueError:
+            is_valid = False
+        self.assertTrue(is_valid)
+
     
