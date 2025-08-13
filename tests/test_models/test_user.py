@@ -17,7 +17,7 @@ class TestUser(unittest.TestCase):
         updated_at = self.my_user.updated_at
 
     def test_issubclass(self):
-        self.assertTrue(hasattr(User, BaseModel))
+        self.assertTrue(issubclass(User, BaseModel))
 
     def test_user_fname(self):
         self.assertTrue(hasattr(self.my_user, "first_name"))
