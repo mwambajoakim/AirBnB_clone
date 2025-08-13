@@ -101,6 +101,7 @@ class HBNBCommand(cmd.Cmd):
         print(all_obj)
 
     def do_update(self, arg):
+        """Updates the storage with current data"""
         args = arg.split()
         from models import classes, storage
         if len(args) == 0:
@@ -136,6 +137,12 @@ class HBNBCommand(cmd.Cmd):
             except Exception:
                 pass
         setattr(obj, attr_name, attr_value)
+
+    def default(self, line):
+        if "." in line:
+            class_name, method = line.split(".", 1)
+            if method == "all()":
+                return self.do_all(class_name)
 
 
 if __name__ == "__main__":
