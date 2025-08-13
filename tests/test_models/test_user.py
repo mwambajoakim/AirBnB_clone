@@ -13,8 +13,6 @@ class TestUser(unittest.TestCase):
         self.my_user.last_name = "Log"
         self.my_user.email = "joelog@email.com"
         self.my_user.password = "jl1234"
-        created_at = self.my_user.created_at
-        updated_at = self.my_user.updated_at
 
     def test_issubclass(self):
         """Assert 'User' inherits from 'BaseModel'"""
