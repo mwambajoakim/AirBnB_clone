@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Test the class User"""
 from models.user import User
+from models.base_model import BaseModel
 import unittest
 import datetime
 
@@ -14,6 +15,9 @@ class TestUser(unittest.TestCase):
         self.my_user.password = "jl1234"
         created_at = self.my_user.created_at
         updated_at = self.my_user.updated_at
+
+    def test_issubclass(self):
+        self.assertTrue(hasattr(User, BaseModel))
 
     def test_user_fname(self):
         self.assertTrue(hasattr(self.my_user, "first_name"))
