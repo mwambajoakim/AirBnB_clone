@@ -25,7 +25,7 @@ class HBNBCommand(cmd.Cmd):
         return None
 
     def do_create(self, arg):
-        """Creates an instance of BaseModela class.
+        """Creates an instance of BaseModel class.
         """
         from models import classes
         if arg and arg not in classes:
@@ -154,6 +154,11 @@ class HBNBCommand(cmd.Cmd):
                     if mode == class_name:
                         sum_class += 1
                 print(sum_class)
+
+            if method.startswith("show(") and method.endswith(")"):
+                object_id = method[5:-1].strip('"').strip("'")
+                return self.do_show(f"{class_name} {object_id}")
+            
 
 
 if __name__ == "__main__":
