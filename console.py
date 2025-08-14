@@ -144,6 +144,17 @@ class HBNBCommand(cmd.Cmd):
             if method == "all()":
                 return self.do_all(class_name)
 
+            if method == "count()":
+                from models import storage
+                models = storage.all()
+                sum_class = 0
+                for key, value in models.items():
+                    identifier = key.split()[0]
+                    mode = identifier.split(".")[0]
+                    if mode == class_name:
+                        sum_class += 1
+                print(sum_class)
+
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
