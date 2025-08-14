@@ -140,6 +140,7 @@ class HBNBCommand(cmd.Cmd):
         obj.updated_at
 
     def default(self, line):
+        """Overrides the default of methods"""
         if "." in line:
             class_name, method = line.split(".", 1)
             if method == "all()":
@@ -167,19 +168,21 @@ class HBNBCommand(cmd.Cmd):
             if method.startswith("update(") and method.endswith(")"):
                 inside_meth = method[len("update("):-1]
                 if "{" in inside_meth:
-                     import ast
-                     parts = inside_meth.split(",", 1)
-                     object_id = parts[0].strip().strip("'").strip('"')
-                     attributes = ast.literal_eval(parts[1].strip())
-                     for key, value in attributes.items():
-                         args = f"{class_name} {object_id} {key} {value}"
-                         self.do_update(args)
-                     return
+                    import ast
+                    parts = inside_meth.split(",", 1)
+                    object_id = parts[0].strip().strip("'").strip('"')
+                    attributes = ast.literal_eval(parts[1].strip())
+                    for key, value in attributes.items():
+                        args = f"{class_name} {object_id} {key} {value}"
+                        self.do_update(args)
+                    return
                 else:
-                    parts = [p.strip().strip('"').strip("'") for p in inside_meth.split(",",2)]
+                    parts = [p.strip().strip('"').strip("'")
+                             for p in inside_meth.split(",", 2)]
                     if len(parts) == 3:
                         object_id, attr_name, attr_value = parts
-                        args = f"{class_name} {object_id} {attr_name} {attr_value}"
+                        args = f"{class_name} {object_id}\
+                                 {attr_name} {attr_value}"
                         return self.do_update(args)
 
 
