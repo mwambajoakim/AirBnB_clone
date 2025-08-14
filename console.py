@@ -137,6 +137,7 @@ class HBNBCommand(cmd.Cmd):
             except Exception:
                 pass
         setattr(obj, attr_name, attr_value)
+        obj.updated_at
 
     def default(self, line):
         if "." in line:
@@ -164,9 +165,22 @@ class HBNBCommand(cmd.Cmd):
                 return self.do_destroy(f"{class_name} {object_id}")
 
             if method.startswith("update(") and method.endswith(")"):
-                arg_list = method.split('"')
-                return self.do_update(f"{class_name} {arg_list[1]} {arg_list[3]} {arg_list[5]}")
-            
+                inside_meth = method[len("update("):-1]
+                if "{" in inside_meth:
+                     import ast
+                     parts = inside_meth.split(",", 1)
+                     object_id = parts[0].strip().strip("'").strip('"')
+                     attributes = ast.literal_eval(parts[1].strip())
+                     for key, value in attributes.items():
+                         args = f"{class_name} {object_id} {key} {value}"
+                         self.do_update(args)
+                     return
+                else:
+                    parts = [p.strip().strip('"').strip("'") for p in inside_meth.split(",",2)]
+                    if len(parts) == 3:
+                        object_id, attr_name, attr_value = parts
+                        args = f"{class_name} {object_id} {attr_name} {attr_value}"
+                        return self.do_update(args)
 
 
 if __name__ == "__main__":
