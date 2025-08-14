@@ -162,6 +162,10 @@ class HBNBCommand(cmd.Cmd):
             if method.startswith("destroy(") and method.endswith(")"):
                 object_id = method[8:-1].strip("'").strip('"')
                 return self.do_destroy(f"{class_name} {object_id}")
+
+            if method.startswith("update(") and method.endswith(")"):
+                arg_list = method.split('"')
+                return self.do_update(f"{class_name} {arg_list[1]} {arg_list[3]} {arg_list[5]}")
             
 
 
