@@ -158,6 +158,10 @@ class HBNBCommand(cmd.Cmd):
             if method.startswith("show(") and method.endswith(")"):
                 object_id = method[5:-1].strip('"').strip("'")
                 return self.do_show(f"{class_name} {object_id}")
+
+            if method.startswith("destroy(") and method.endswith(")"):
+                object_id = method[8:-1].strip("'").strip('"')
+                return self.do_destroy(f"{class_name} {object_id}")
             
 
 
