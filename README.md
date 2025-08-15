@@ -42,7 +42,8 @@
   - If the instance of the class name doesn’t exist for the `id`, prints `** no instance found **` (ex: `$ update BaseModel 121212`)
   - If the attribute name is missing, prints `** attribute name missing **` (ex: `$ update BaseModel existing-id`)
   - If the value for the attribute name doesn’t exist, prints `** value missing **` (ex: `$ update BaseModel existing-id first_name`)
-  
+- Overriding the default method through the following conditions:
+  - Updated command interpreter to retrieve all instances of a class by using: `<class name>.all()`.
 ### models/__init__.py
 - In this file all the classes that will be used in the different files for example the console and FileStorage classes to access the classes BaseModel and its children are defined in a dictionary.
 - The instance storage is also in here.
