@@ -46,7 +46,8 @@
   - Updated command interpreter to retrieve all instances of a class by using: `<class name>.all()`.
   - Updated command interpreter to retrieve the number of instances of a class: `<class name>.count()`.
   - Updated command interpreter to retrieve an instance based on its ID: `<class name>.show(<id>)`.
-  - Updated command interpreter to destroy an instance based on his ID: `<class name>.destroy(<id>)`.
+  - Updated command interpreter to destroy an instance based on its ID: `<class name>.destroy(<id>)`.
+  - Updated command interpreter to update an instance based on its ID: `<class name>.update(<id>, <attribute name>, <attribute value>)`.
 
 
 ### models/__init__.py
