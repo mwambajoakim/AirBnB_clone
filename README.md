@@ -48,6 +48,9 @@
   - Updated command interpreter to retrieve an instance based on its ID: `<class name>.show(<id>)`.
   - Updated command interpreter to destroy an instance based on its ID: `<class name>.destroy(<id>)`.
   - Updated command interpreter to update an instance based on its ID: `<class name>.update(<id>, <attribute name>, <attribute value>)`.
+  - Updated command interpreter to update an instance based on its ID with a dictionary: `<class name>.update(<id>, <dictionary representation>)`.
+
+
 
 
 ### models/__init__.py
