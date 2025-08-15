@@ -46,6 +46,8 @@
   - Updated command interpreter to retrieve all instances of a class by using: `<class name>.all()`.
   - Updated command interpreter to retrieve the number of instances of a class: `<class name>.count()`.
   - Updated command interpreter to retrieve an instance based on its ID: `<class name>.show(<id>)`.
+  - Updated command interpreter to destroy an instance based on his ID: `<class name>.destroy(<id>)`.
+
 
 ### models/__init__.py
 - In this file all the classes that will be used in the different files for example the console and FileStorage classes to access the classes BaseModel and its children are defined in a dictionary.
