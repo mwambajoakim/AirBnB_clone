@@ -1,0 +1,12 @@
+.places {
+    font-size: 30px;
+}
+
+article h2 {
+    width: 390px;
+    font-size: 30px;
+    border: 1px solid #FF5A5F;
+    padding: 20px;
+    margin: 20px;
+    display: inline;
+}
