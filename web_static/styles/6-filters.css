@@ -64,6 +64,10 @@ ul.popover h2 {
     font-size: 14px;
 }
 
+.filters div:hover > ul.popover {
+    display: block;
+}
+
 ul.popover {
     color: #FAFAFA;
     width: auto;
